@@ -2,11 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default function EquipoView() {
+    const equipos = ["Equipo 1", "Equipo 2", "Equipo 3"];
+    
     return (
         <View style={styles.navbar}>
-            <Text style={styles.navbarText}>Equipo 1</Text>
-            <Text style={styles.navbarText}>Equipo 2</Text>
-            <Text style={styles.navbarText}>Equipo 3</Text>
+            {equipos.map((equipo, index) => (
+                <Text key={index} style={styles.navbarText}>{equipo}</Text>
+            ))}
         </View>
     );
 }
@@ -20,7 +22,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     navbarText: {
-        flexDirection: 'row',
         fontSize: 20,
         borderColor: 'black',
         borderWidth: 1,
