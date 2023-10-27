@@ -1,34 +1,48 @@
+import React from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
+export default function JugadorView({
+  equipos,
+  equipoSeleccionado,
+  pokemonSeleccionado,
+  setPokemonSeleccionado,
+}) {
+  const pokemons = equipos[equipoSeleccionado];
 
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-
-export default function JugadorView() {
-    return (
-        <View style={styles.divJug}>
-            <Text style={styles.divJugText}>Jugador 1.1</Text>
-            <Text style={styles.divJugText}>Jugador 1.2</Text>
-            <Text style={styles.divJugText}>Jugador 1.3</Text>
-            <Text style={styles.divJugText}>Jugador 1.4</Text>
-            <Text style={styles.divJugText}>Jugador 1.5</Text>
-        </View>
-    );
+  return (
+    <View style={styles.equiposContainer}>
+      {pokemons.map((pokemon, index) => (
+        <TouchableOpacity
+          key={index}
+          onPress={() => setPokemonSeleccionado(index)}
+        >
+          <Text style={[
+            styles.nombrePokemon,
+            index === pokemonSeleccionado ? styles.selectedNombreEquipo : null
+          ]}>
+            {pokemon.nombre}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    divJug: {
-        flex: 1,
-        padding: 5,
-        flexDirection: 'column',
-        borderColor: 'black',
-        borderWidth: 1,
-        alignItems: 'center',
-    },
-    divJugText: {
-        fontSize: 20,
-        borderColor: 'black',
-        borderWidth: 1,
-        maxWidth: 125,
-        margin: 5,
-    },
+  equiposContainer: {
+    flex: 1,
+    borderColor: 'black',
+    borderWidth: 1,
+    alignItems: 'center',
+  },
+  nombrePokemon: {
+    fontSize: 20,
+    borderColor: 'black',
+    borderWidth: 1,
+    maxWidth: 125,
+    margin: 5,
+  },
+  selectedNombreEquipo: {
+    backgroundColor: 'yellow',
+  },
 });

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import EquipoView from './equipo';
 
-export default function HeaderView() {
+export default function HeaderView({equipos, equipoSeleccionado, onEquipoSeleccionado}) {
     return (
         <View>
-            <EquipoView></EquipoView>
+            <EquipoView equipos={equipos} equipoSeleccionado={equipoSeleccionado} onEquipoSeleccionado={onEquipoSeleccionado}></EquipoView>
         </View>
     );
 }
