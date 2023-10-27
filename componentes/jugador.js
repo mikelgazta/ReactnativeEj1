@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     maxWidth: 125,
-    margin: 5,
+    margin: 15,
   },
   selectedNombreEquipo: {
     backgroundColor: 'yellow',

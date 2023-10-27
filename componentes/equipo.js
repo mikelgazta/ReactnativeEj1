@@ -23,8 +23,8 @@ const EquipoView = ({equipos, equipoSeleccionado, onEquipoSeleccionado}) => {
 
 const styles = StyleSheet.create({
   equiposContainer: {
-    flexDirection: "row",
-    flex: 1,
+    height: 100,
+    flexDirection: 'row',
     borderColor: 'black',
     borderWidth: 1,
     alignItems: 'center',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     maxWidth: 125,
-    margin: 5,
+    margin: 10,
   },
   selectedNombreEquipo: {
     backgroundColor: 'yellow',
