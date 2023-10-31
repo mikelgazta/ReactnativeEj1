@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const EquipoView = ({equipos, equipoSeleccionado, onEquipoSeleccionado}) => {
+const EquipoView = ({ equipos, equipoSeleccionado, onEquipoSeleccionado }) => {
+  const [hoveredEquipo, setHoveredEquipo] = useState(null);
+
   return (
     <View style={styles.equiposContainer}>
       {Object.keys(equipos).map((nombreEquipo, index) => (
         <TouchableOpacity
           key={index}
           onPress={() => onEquipoSeleccionado(nombreEquipo)}
+          onMouseEnter={() => setHoveredEquipo(nombreEquipo)}
+          onMouseLeave={() => setHoveredEquipo(null)}
         >
           <Text style={[
             styles.nombreEquipo,
-            nombreEquipo === equipoSeleccionado ? styles.selectedNombreEquipo : null
+            nombreEquipo === equipoSeleccionado ? styles.selectedNombreEquipo : null,
+            nombreEquipo === hoveredEquipo ? styles.hoveredNombreEquipo : null
           ]}>
             {nombreEquipo}
           </Text>
@@ -38,6 +43,9 @@ const styles = StyleSheet.create({
   },
   selectedNombreEquipo: {
     backgroundColor: 'yellow',
+  },
+  hoveredNombreEquipo: {
+    backgroundColor: 'lightblue',
   },
 });
 

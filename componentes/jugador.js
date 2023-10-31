@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function JugadorView({
@@ -8,6 +8,7 @@ export default function JugadorView({
   setPokemonSeleccionado,
 }) {
   const pokemons = equipos[equipoSeleccionado];
+  const [hoveredPokemon, setHoveredPokemon] = useState(null);
 
   return (
     <View style={styles.equiposContainer}>
@@ -15,10 +16,13 @@ export default function JugadorView({
         <TouchableOpacity
           key={index}
           onPress={() => setPokemonSeleccionado(index)}
+          onMouseEnter={() => setHoveredPokemon(index)}
+          onMouseLeave={() => setHoveredPokemon(null)}
         >
           <Text style={[
             styles.nombrePokemon,
-            index === pokemonSeleccionado ? styles.selectedNombreEquipo : null
+            index === pokemonSeleccionado ? styles.selectedNombreEquipo : null,
+            index === hoveredPokemon ? styles.hoveredNombrePokemon : null
           ]}>
             {pokemon.nombre}
           </Text>
@@ -44,5 +48,8 @@ const styles = StyleSheet.create({
   },
   selectedNombreEquipo: {
     backgroundColor: 'yellow',
+  },
+  hoveredNombrePokemon: {
+    backgroundColor: 'lightblue',
   },
 });
